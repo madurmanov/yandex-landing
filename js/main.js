@@ -61,14 +61,19 @@ function throttle(func, delay) {
       this.callbacks = callbacks;
       this.startX = 0;
       this.startY = 0;
+      this.isDragging = false;
       this.threshold = 50;
       this.restraint = 100;
 
       this.handleTouchStart = (e) => this.touchStart(e);
+      this.handleTouchMove = (e) => this.touchMove(e);
       this.handleTouchEnd = (e) => this.touchEnd(e);
 
       this.element.addEventListener('touchstart', this.handleTouchStart, {
         passive: true,
+      });
+      this.element.addEventListener('touchmove', this.handleTouchMove, {
+        passive: false,
       });
       this.element.addEventListener('touchend', this.handleTouchEnd, {
         passive: true,
@@ -76,15 +81,33 @@ function throttle(func, delay) {
     }
 
     touchStart(e) {
-      const touch = e.changedTouches[0];
+      const touch = e.touches[0];
       this.startX = touch.pageX;
       this.startY = touch.pageY;
+      this.isDragging = true;
+    }
+
+    touchMove(e) {
+      if (!this.isDragging) return;
+      const touch = e.touches[0];
+      const distX = touch.pageX - this.startX;
+      const distY = touch.pageY - this.startY;
+
+      if (Math.abs(distX) > Math.abs(distY)) {
+        e.preventDefault();
+      }
     }
 
     touchEnd(e) {
+      if (!this.isDragging) return;
+      this.isDragging = false;
+
       const touch = e.changedTouches[0];
       const distX = touch.pageX - this.startX;
       const distY = touch.pageY - this.startY;
+
+      this.startX = 0;
+      this.startY = 0;
 
       if (
         Math.abs(distX) >= this.threshold &&
@@ -97,6 +120,7 @@ function throttle(func, delay) {
 
     destroy() {
       this.element.removeEventListener('touchstart', this.handleTouchStart);
+      this.element.removeEventListener('touchmove', this.handleTouchMove);
       this.element.removeEventListener('touchend', this.handleTouchEnd);
     }
   }
@@ -174,44 +198,43 @@ function throttle(func, delay) {
       this.attachSwipes();
 
       if (this.autoPlay) {
-        [...this.slides].forEach((slide) => {
-          slide.addEventListener('click', () => this.restartAutoPlay());
-        });
+        this.slider.addEventListener('click', () => this.restartAutoPlay());
       }
     }
 
     attachSwipes() {
-      if (this.slidesToShow === 0) {
-        if (this.swipe) {
-          this.swipe.destroy();
-          this.swipe = null;
-        }
-        return;
-      }
+      if (this.swipe) this.swipe.destroy();
+      if (this.slidesToShow === 0) return;
 
-      if (!this.swipe) {
-        this.swipe = new SwipeDetector(this.slider, {
-          left: () => {
-            this.next();
-            this.restartAutoPlay();
-          },
-          right: () => {
-            this.prev();
-            this.restartAutoPlay();
-          },
-        });
-      }
+      this.swipe = new SwipeDetector(this.container, {
+        left: () => {
+          this.next();
+          this.restartAutoPlay();
+        },
+        right: () => {
+          this.prev();
+          this.restartAutoPlay();
+        },
+      });
     }
 
     updateSlides() {
       const width = window.innerWidth;
+      const prevSlidesToShow = this.slidesToShow;
+
       if (this.mobileOnly && width > this.mobileBreakpoint) {
         this.slidesToShow = 0;
         this.slider.style.transform = 'translateX(0)';
-        return;
+      } else {
+        this.slidesToShow =
+          width <= this.mobileBreakpoint ? 1 : this.slidesToShowDesktop;
       }
-      this.slidesToShow =
-        width <= this.mobileBreakpoint ? 1 : this.slidesToShowDesktop;
+
+      if (prevSlidesToShow !== this.slidesToShow) {
+        this.currentSlide = 0;
+        this.slider.style.transform = 'translateX(0)';
+      }
+
       this.updateSlideWidth();
     }
 
@@ -340,12 +363,12 @@ function throttle(func, delay) {
   }
 
   new Slider({
-    selector: '.Steps',
+    selector: '.StepsSlider',
     mobileOnly: true,
   });
 
   new Slider({
-    selector: '.Participants',
+    selector: '.ParticipantsSlider',
     slidesToShowDesktop: 3,
     loop: true,
     autoPlay: 4000,

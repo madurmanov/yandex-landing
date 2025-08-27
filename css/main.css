@@ -764,6 +764,7 @@
 }
 
 .Slider {
+  touch-action: pan-y;
   transform: translateX(0);
   transition: transform 0.4s;
   will-change: transform;
