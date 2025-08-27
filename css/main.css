@@ -784,19 +784,19 @@
   display: inline-block;
   border: solid var(--color-fimn);
   border-width: 0 2px 2px 0;
-  padding: 5px;
+  padding: 0.5rem;
   transition: transform 0.2s;
   will-change: transform;
 }
 .Slider-ButtonArrow_left {
-  margin-right: -4px;
+  margin-right: -0.4rem;
   transform: rotate(135deg);
 }
 .Slider-Button:active .Slider-ButtonArrow_left {
   transform: rotate(135deg) scale(0.9);
 }
 .Slider-ButtonArrow_right {
-  margin-left: -4px;
+  margin-left: -0.4rem;
   transform: rotate(-45deg);
 }
 .Slider-Button:active .Slider-ButtonArrow_right {
