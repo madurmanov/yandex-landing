@@ -1,0 +1,20 @@
+{
+  "short_name": "Клуб четырех коней",
+  "name": "Клуб четырех коней",
+  "icons": [
+    { "src": "favicon-16.png", "type": "image/png", "sizes": "16x16" },
+    { "src": "favicon-32.png", "type": "image/png", "sizes": "32x32" },
+    { "src": "favicon-48.png", "type": "image/png", "sizes": "48x48" },
+    { "src": "favicon-64.png", "type": "image/png", "sizes": "64x64" },
+    { "src": "favicon-128.png", "type": "image/png", "sizes": "128x128" },
+    { "src": "favicon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "favicon-256.png", "type": "image/png", "sizes": "256x256" },
+    { "src": "favicon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF"
+}
