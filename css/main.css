@@ -168,12 +168,12 @@
   min-height: auto;
 }
 .Button_type_white {
-  border: 2px solid var(--color-hait);
+  border: 0.2rem solid var(--color-hait);
   background: transparent;
   color: var(--color-hait);
 }
 .Button_type_blue {
-  border: 2px solid var(--color-zyan);
+  border: 0.2rem solid var(--color-zyan);
   background: transparent;
   color: var(--color-zyan);
 }
@@ -215,7 +215,7 @@
   flex-wrap: wrap;
 }
 .Table-Row:not(:first-child) {
-  border-top: 2px solid var(--color-qaso);
+  border-top: 0.2rem solid var(--color-qaso);
 }
 .Table-Cell {
   padding: 1.6rem 0;
@@ -225,7 +225,7 @@
   color: var(--color-tosh);
 }
 .Table-Cell_caption {
-  border-right: 2px solid var(--color-qaso);
+  border-right: 0.2rem solid var(--color-qaso);
   font-weight: 400;
   text-align: left;
   color: var(--color-digo);
@@ -250,7 +250,7 @@
 @media (max-width: 425px) {
   .Table-Row:not(:first-child) {
     margin-top: 0.4rem;
-    border-top: 2px solid var(--color-qaso);
+    border-top: 0.2rem solid var(--color-qaso);
     padding-top: 1.6rem;
   }
   .Table-Cell {
@@ -284,10 +284,10 @@
   content: '';
   display: block;
   position: absolute;
-  top: calc(50% + 1px);
-  left: -2px;
+  top: calc(50%);
+  left: -0.2rem;
   width: 100%;
-  border: 1px solid red;
+  border: 0.1rem solid red;
 }
 
 .Logo,
@@ -306,8 +306,15 @@
   box-sizing: border-box;
   padding: 2.6rem 0;
   min-height: 70rem;
-  background: url('../images/desktop/header.jpg') no-repeat bottom center /
-    cover var(--color-yuge);
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: cover;
+  background-color: var(--color-yuge);
+  background-image: url('../images/desktop/header.jpg');
+  background-image: image-set(
+    url('../images/desktop/header.webp') type('image/webp'),
+    url('../images/desktop/header.jpg') type('image/jpeg')
+  );
 }
 .Header-Wrapper {
   display: flex;
@@ -338,6 +345,10 @@
     padding-top: 1.8rem;
     min-height: 77.4rem;
     background-image: url('../images/touch/header.jpg');
+    background-image: image-set(
+      url('../images/touch/header.webp') type('image/webp'),
+      url('../images/touch/header.jpg') type('image/jpeg')
+    );
   }
   .Header-Title {
     margin-top: 4rem;
@@ -523,7 +534,14 @@
   z-index: 1;
   width: 40.1rem;
   height: 23.5rem;
-  background: url('../images/desktop/plane.png') no-repeat 50% / cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-image: url('../images/desktop/plane.png');
+  background-image: image-set(
+    url('../images/desktop/plane.webp') type('image/webp'),
+    url('../images/desktop/plane.png') type('image/png')
+  );
 }
 .Steps-List {
   list-style: none;
@@ -605,11 +623,19 @@
     grid-column: 1;
     grid-row: 3;
     background-image: url('../images/desktop/pattern-2.jpg');
+    background-image: image-set(
+      url('../images/desktop/pattern-2.webp') type('image/webp'),
+      url('../images/desktop/pattern-2.jpg') type('image/jpeg')
+    );
   }
   .Steps-ListItem:nth-child(5) .Steps-Card:nth-child(1) {
     grid-column: 2 / 4;
     grid-row: 3;
     background-image: url('../images/desktop/pattern-3.jpg');
+    background-image: image-set(
+      url('../images/desktop/pattern-3.webp') type('image/webp'),
+      url('../images/desktop/pattern-3.jpg') type('image/jpeg')
+    );
   }
   .Steps-ListItem:nth-child(1) .Steps-Card:nth-child(1),
   .Steps-ListItem:nth-child(1) .Steps-Card:nth-child(2),
@@ -617,6 +643,10 @@
   .Steps-ListItem:nth-child(3) .Steps-Card:nth-child(1),
   .Steps-ListItem:nth-child(3) .Steps-Card:nth-child(2) {
     background-image: url('../images/desktop/pattern-1.jpg');
+    background-image: image-set(
+      url('../images/desktop/pattern-1.webp') type('image/webp'),
+      url('../images/desktop/pattern-1.jpg') type('image/jpeg')
+    );
   }
   .Steps-ListItem:nth-child(5) .Steps-Text {
     max-width: 44.6rem;
@@ -636,6 +666,10 @@
     height: 18.2rem;
     transform: translateX(-50%);
     background-image: url('../images/touch/plane.png');
+    background-image: image-set(
+      url('../images/touch/plane.webp') type('image/webp'),
+      url('../images/touch/plane.png') type('image/png')
+    );
   }
   .Steps-List {
     display: flex;
@@ -647,7 +681,15 @@
     margin: 0 2rem;
     width: calc(100% - 4rem);
     height: 30rem;
-    background: url('../images/touch/pattern-1.jpg') no-repeat 50% / cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    background-color: var(--color-yuge);
+    background-image: url('../images/touch/pattern-1.jpg');
+    background-image: image-set(
+      url('../images/touch/pattern-1.webp') type('image/webp'),
+      url('../images/touch/pattern-1.jpg') type('image/jpeg')
+    );
   }
   .Steps-Card {
     padding: 0.8rem 2.4rem 2.8rem 2rem;
@@ -703,7 +745,15 @@
   border-radius: 50%;
   width: 32rem;
   height: 32rem;
-  background: url('../images/desktop/participant.png') no-repeat 50% / cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-color: var(--color-yuge);
+  background-image: url('../images/desktop/participant.png');
+  background-image: image-set(
+    url('../images/desktop/participant.webp') type('image/webp'),
+    url('../images/desktop/participant.png') type('image/png')
+  );
 }
 .Participants-Caption,
 .Participants-Text {
@@ -752,6 +802,10 @@
     width: 24.4rem;
     height: 24.4rem;
     background-image: url('../images/touch/participant.png');
+    background-image: image-set(
+      url('../images/touch/participant.webp') type('image/webp'),
+      url('../images/touch/participant.png') type('image/png')
+    );
   }
   .Participants-Text {
     margin-top: 0.8rem;
@@ -784,7 +838,7 @@
 .Slider-ButtonArrow {
   display: inline-block;
   border: solid var(--color-fimn);
-  border-width: 0 2px 2px 0;
+  border-width: 0 0.2rem 0.2rem 0;
   padding: 0.5rem;
   transition: transform 0.2s;
   will-change: transform;

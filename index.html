@@ -20,21 +20,66 @@
   <title>Клуб четырех коней</title>
   <meta name="keywords" content="Клуб четырех коней">
   <meta name="description" content="Шахматный клуб четырех коней">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Merriweather:wght@400;700">
-  <link rel="stylesheet" href="./css/normalize.css">
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="preload" href="./fonts/GolosText-Regular.woff2" as="font" type="font/woff2">
+  <link rel="preload" href="./fonts/GolosText-Medium.woff2" as="font" type="font/woff2">
+  <link rel="preload" href="./fonts/GolosText-SemiBold.woff2" as="font" type="font/woff2">
+  <link rel="preload" href="./fonts/Merriweather-Regular.woff2" as="font" type="font/woff2">
+  <link rel="preload" href="./fonts/Merriweather-Bold.woff2" as="font" type="font/woff2">
+  <link rel="preload" href="./css/normalize.css" as="style" onload="this.onload=null; this.rel='stylesheet'">
+  <link rel="preload" href="./css/main.css" as="style" onload="this.onload=null; this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/main.css">
+  </noscript>
   <link rel="preload" href="./js/main.js" as="script">
   <link rel="manifest" href="./manifest.json">
   <style>
+    @font-face {
+      font-family: 'Golos Text';
+      src: url('./fonts/GolosText-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Golos Text';
+      src: url('./fonts/GolosText-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Golos Text';
+      src: url('./fonts/GolosText-SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Merriweather';
+      src: url('./fonts/Merriweather-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Merriweather';
+      src: url('./fonts/Merriweather-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
     html,
     body {
       height: 100%;
     }
 
     html {
-      scroll-behavior: smooth;
       background-color: #fff;
       color: #313131;
       font: 400 10px/1 "Golos Text", "Helvetica", sans-serif;
@@ -89,7 +134,9 @@
           <h2 class="Title Title_size_small Support-Title">
             Чтобы поддержать Международный васюкинский турнир
             <picture>
+              <source srcset="./images/touch/support.webp" type="image/webp" media="(max-width: 425px)">
               <source srcset="./images/touch/support.png" media="(max-width: 425px)">
+              <source srcset="./images/desktop/support.webp" type="image/webp">
               <img class="Support-Image" src="./images/desktop/support.png" alt="Гроссмейстеры, играющие в шахматы">
             </picture>
             посетите лекцию на тему: <span class="Title-Decoration">«Плодотворная дебютная идея»</span>
@@ -100,7 +147,9 @@
       <section class="Wrapper Section About" id="about-section">
         <div class="About-Image">
           <picture>
+            <source srcset="./images/touch/about.webp" type="image/webp" media="(max-width: 425px)">
             <source srcset="./images/touch/about.png" media="(max-width: 425px)">
+            <source srcset="./images/desktop/about.webp" type="image/webp">
             <img class="About-ImageIn" src="./images/desktop/about.png" alt="Иллюстрация с гроссмейстером и шахматами">
           </picture>
         </div>
@@ -159,12 +208,12 @@
             </li>
             <li class="Steps-ListItem">
               <div class="Steps-Card">
-                <p class="Steps-Text" data-number="6">Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</p>
+                <p class="Steps-Text Steps-Text_singleStep" data-number="6">Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</p>
               </div>
             </li>
             <li class="Steps-ListItem">
               <div class="Steps-Card">
-                <p class="Steps-Text" data-number="7">Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн</p>
+                <p class="Steps-Text Steps-Text_singleStep" data-number="7">Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн</p>
               </div>
             </li>
           </ul>
